@@ -1,0 +1,15 @@
+{% extends "market/base.html" %}
+
+{% block title %}{{ category.title }} | {{ block.super }}{% endblock title %}
+{% block jumbotron %} {% endblock jumbotron %}
+
+{% block content %}
+    {% for product in products %}
+    <div class="card">
+        <h2><a href="{{ product.get_product_url }}">{{ product.title }}</a></h2>
+        <p><img src="{{ product.image.url }}" style="width: 100%; display: block;"></p>
+        <p class="card-text">{{ product.description }}</p>
+        <p>Цена: {{ product.price }} руб.</p>
+    </div>
+    {% endfor %}
+{% endblock content %}

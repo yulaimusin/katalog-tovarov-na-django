@@ -1,0 +1,17 @@
+{% extends "market/base.html" %}
+
+{% block title %}{{ product.title }} | {{ block.super }}{% endblock title %}
+{% block jumbotron %} {% endblock jumbotron %}
+
+{% block content %}
+    <h1><a href="{{ product.get_product_url }}">{{ product.title }}</a></h1>
+    <p>Категория: <a href="{{ product.category.get_category_url }}">{{ product.category }}</a></p>
+    <p><img src="{{ product.image.url }}" style="width: 100%; display: block;"></p>
+    <p>{{ product.description }}</p>
+    <p>Цена: {{ product.price }} руб.</p>
+    {% if product.in_stock > 0 %}
+        <p>В наличии: {{ product.in_stock }} шт.</p>
+    {% else %}
+        <p>Нет в наличии</p>
+    {% endif %}
+{% endblock content %}
